@@ -7,4 +7,4 @@
 1. [3rd party Nortek DVL(1000) Ethernet ROS driver](https://github.com/GSO-soslab/nortek_dvl_ethernet)
 2. [Nucleus Documentation/Software](https://www.nortekgroup.com/software?instrument=241790)
 3. [Nortek DVL WebApp](https://nucleus.nortekgroup.com/)
-4. [Nucleus Manual]()
+4. Nucleus Manual PDF (see this directory)
