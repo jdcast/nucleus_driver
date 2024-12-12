@@ -140,15 +140,33 @@ Build the docker image
 
 ```
 cd path/to/nucleus_driver/ros2/
-sudo docker build . -t nucleus_driver_ros2
+sudo docker build . -t nucleus_driver_ros2_jazzy
 ```
 
 ## docker run
 
-The docker image can run nucleus_node with the following command 
+Find the serial port the device is connected on
 
 ```
-docker run --name=Nucleus-Node -it nucleus_driver_ros2 bash -c "ros2 run nucleus_driver_ros2 nucleus_node"
+ls /dev/tty*
+```
+
+Make sure the port is available
+
+```
+sudo lsof | grep /dev/ttyUSB<PORT>
+```
+
+You have to update the port's permissions
+
+```
+sudo chmod 666 /dev/ttyUSB<PORT>
+```
+
+The docker image can run nucleus_node with the following (assuming a serial connection)
+
+```
+docker run --name=Nucleus-Node -it --rm --device=/dev/ttyUSB<PORT>:/dev/ttyUSB<PORT>  nucleus_driver_ros2_jazzy_2 bash -c "ros2 run nucleus_driver_ros2 nucleus_node"
 ```
 
 ### Serial connection
