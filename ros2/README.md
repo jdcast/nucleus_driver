@@ -166,7 +166,7 @@ sudo chmod 666 /dev/ttyUSB<PORT>
 The docker image can run nucleus_node with the following (assuming a serial connection)
 
 ```
-docker run --name=Nucleus-Node -it --rm --device=/dev/ttyUSB<PORT>:/dev/ttyUSB<PORT>  nucleus_driver_ros2_jazzy_2 bash -c "ros2 run nucleus_driver_ros2 nucleus_node"
+docker run --name=Nucleus-Node -it --rm --device=/dev/ttyUSB<PORT>:/dev/ttyUSB<PORT>  nucleus_driver_ros2_jazzy bash -c "ros2 run nucleus_driver_ros2 nucleus_node"
 ```
 
 ### Serial connection
