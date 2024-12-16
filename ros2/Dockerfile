@@ -32,4 +32,8 @@ ENV FASTRTPS_DEFAULT_PROFILES_FILE=${WORKSPACE}/config/fastrtps-profile.xml
 COPY ./entrypoints/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
+# Add `source` commands to .bashrc
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc && \
+    echo "source ${WORKSPACE}/install/local_setup.bash" >> ~/.bashrc
+
 ENTRYPOINT [ "/entrypoint.sh" ]
