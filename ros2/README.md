@@ -163,10 +163,19 @@ You have to update the port's permissions
 sudo chmod 666 /dev/ttyUSB<PORT>
 ```
 
-The docker image can run nucleus_node with the following (assuming a serial connection)
+The docker image can run nucleus_node with the following (assuming a serial connection), a mapped directory on the host for storing bags (see ### Bagging below), and the desire to map the code repository's `/src` directory for faster development to avoid having to rebuild the imag when code changes are made.
 
 ```
-docker run --name=Nucleus-Node -it --rm --device=/dev/ttyUSB<PORT>:/dev/ttyUSB<PORT>  nucleus_driver_ros2_jazzy bash -c "ros2 run nucleus_driver_ros2 nucleus_node"
+docker run --name=Nucleus-Node -it --rm --device=/dev/ttyUSB0:/dev/ttyUSB0  -v ~/nucleus_driver/ros2/src:/ros2/src -v ~/nucleus_driver_bags:/data nucleus_driver_ros2_jazzy bash -c "ros2 run nucleus_driver_ros2 nucleus_node"
+```
+
+### Bagging
+
+There is an example script for controlling the nuclues_node as well as a bagging script which starts all functionality on the DVL and logs to a ROS2 bag [here](https://git.whoi.edu/ros/nucleus_driver/-/tree/jazzy/ros2/src/nucleus_driver_ros2/scripts?ref_type=heads).
+
+For example, bagging can be performed if the following is ran in a separate instance within the container:
+```
+python3 src/nucleus_driver_ros2/scripts/run_and_bag.py -s /dev/ttyUSB0
 ```
 
 ### Serial connection
