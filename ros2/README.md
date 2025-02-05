@@ -163,10 +163,10 @@ You have to update the port's permissions
 sudo chmod 666 /dev/ttyUSB<PORT>
 ```
 
-The docker image can run nucleus_node with the following command assuming a serial connection, a mapped directory on the host for storing bags (see ### Bagging below), and the desire to map the code repository's `/src` directory for faster development to avoid having to rebuild the imag when code changes are made.
+The docker image can run nucleus_node with the following command assuming a serial connection, a mapped directory on the host for storing bags (see the scripts [README](https://git.whoi.edu/ros/nucleus_driver/-/blob/jazzy/ros2/src/nucleus_driver_ros2/scripts/README.md?ref_type=heads)), and the desire to map the code repository's `/src` directory for faster development to avoid having to rebuild the imag when code changes are made.
 
 ```
-docker run --name=Nucleus-Node -it --rm --device=/dev/ttyUSB0:/dev/ttyUSB0  -v ~/nucleus_driver/ros2/src:/ros2/src -v ~/nucleus_driver_bags:/data nucleus_driver_ros2_jazzy bash -c "ros2 run nucleus_driver_ros2 nucleus_node"
+docker run --name=Nucleus-Node -it --rm --device=/dev/ttyUSB0:/dev/ttyUSB0  -v ~/nucleus_driver/ros2/src:/ros2/src -v ~/nucleus_driver_data:/data nucleus_driver_ros2_jazzy bash -c "ros2 run nucleus_driver_ros2 nucleus_node"
 ```
 
 ### Serial connection
